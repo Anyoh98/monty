@@ -63,7 +63,7 @@ typedef struct instruction_s
  * current line being read from the monty file.
  */
 
-typeedef struct MontyContext
+typedef struct MontyContext
 {
 	char *argument;/*arg associated with opcode*/
 	FILE *file;/*pointer monty file*/

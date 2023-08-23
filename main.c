@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Error: Cant open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
+		arg_len = strlen(argv[1]);
 		if (arg_len >= 2 && strcmp(argv[1] + arg_len - 2, ".m") == 0)
 		{
 			read_line(&stack);

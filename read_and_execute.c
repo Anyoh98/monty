@@ -34,7 +34,7 @@ void read_line(stack_t **stack)
  * Return: void
  */
 
-void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number)
+void execute_opcode(char *opcode, stack_t **stack, unsigned int count)
 {
 	int i;
 
@@ -43,7 +43,7 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number)
 		{"pall", pall_op},
 		{NULL, NULL}
 	};
-	for (i = 0; instructions[i].opcode != NULL; i++)
+	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
 		{

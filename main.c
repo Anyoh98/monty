@@ -11,7 +11,7 @@ MontyContext montycontext;
 
 int main(int argc, char *argv[])
 {
-	stack_t *stack = create_stack();
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
 	read_line(&stack);
 	fclose(montycontext.file);
 	free(montycontext.line);
-	free_stack(stack);
+	free_linked_list(stack);
 	exit(EXIT_SUCCESS);
 }

@@ -1,4 +1,4 @@
-#incldue "monty.h"
+#include "monty.h"
 /**
  * push_op - adds a new node on the stack
  * @head: pointer to the head of the stack.
@@ -12,12 +12,20 @@ void push_op(stack_t **head, unsigned int line_number)
 
 	if (montycontext.argument == NULL || !isNumber(montycontext.argument))
 	{
-		handle_error(head, "L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_linked_list(*head);
+		fclose(montycontext.file);
+		free(montycontext.line);
+		exit(EXIT_FAILURE);
 	}
 	n = atoi(montycontext.argument);
-	if (add_newnode(stack, n) == NULL)
+	if (add_newnode(head, n) == NULL)
 	{
-		handle_error(&stack, "Error: malloc failed\n");
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_linked_list(*head);
+		fclose(montycontext.file);
+		free(montycontext.line);
+		exit(EXIT_FAILURE);
 	}
 
 }

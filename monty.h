@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <ctype.h>
@@ -54,11 +55,6 @@ typedef struct stack_s
  * Description: top is a pinter to teh top o the stack
  */
 
-typedef struct Stack
-{
-	Node *top;
-} Stack;
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -74,7 +70,6 @@ typedef struct instruction_s
 } instruction_t;
 
 /*Prototypes*/
-Stack *create_stack(void);
 void free_linked_list(stack_t *head);
 void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
 void read_line(stack_t **stack);

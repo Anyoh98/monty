@@ -78,6 +78,7 @@ Stack *create_stack(void);
 void free_linked_list(stack_t *head);
 void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
 void read_line(stack_t **stack);
+stack_t *add_newnode(stack_t **stack, const int n);
 void push_op(stack_t **head, unsigned int line_number);
 bool isNumber(char *str);
 void handle_error(stack_t **stack, char *message);

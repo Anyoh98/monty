@@ -14,6 +14,11 @@ void push_op(stack_t **head, unsigned int line_number)
 	{
 		handle_error(head, "L%d: usage: push integer\n", line_number);
 	}
+	n = atoi(montycontext.argument);
+	if (add_newnode(stack, n) == NULL)
+	{
+		handle_error(&stack, "Error: malloc failed\n");
+	}
 
 }
 
@@ -28,6 +33,14 @@ bool isNumber(char *str)
 	if (str == NULL || *str == '\0')
 	{
 		return (false);
+	}
+	while (isspace(*str))
+	{
+		str++;
+	}
+	if (*str == '+' || *str == '-')
+	{
+		str++;
 	}
 	while (*str != '\0')
 	{

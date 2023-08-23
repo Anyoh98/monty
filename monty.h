@@ -11,6 +11,27 @@
 #include <fcntl.h>
 
 /**
+ * struct MontyContext - This is the global context for our Monty interpreter
+ * @argument: string/int arg associated with opcode such as pop, push, etc
+ * @file: pointer to the monty file being processed
+ * @line: The current line that is being read from the monty file.
+ *
+ * Description: hold the gloabal data use dby the monty interpreter.
+ * it stores the current argument, the monty file being processed and the
+ * current line being read from the monty file.
+ */
+
+typedef struct MontyContext
+{
+	char *argument;/*arg associated with opcode*/
+	FILE *file;/*pointer monty file*/
+	char *line; /*current line being read from the monty file*/
+} MontyContext;
+
+extern MontyContext montycontext;
+
+
+/**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
@@ -51,25 +72,6 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
-/**
- * struct MontyContext - This is the global context for our Monty interpreter
- * @argument: string/int arg associated with opcode such as pop, push, etc
- * @file: pointer to the monty file being processed
- * @line: The current line that is being read from the monty file.
- *
- * Description: hold the gloabal data use dby the monty interpreter.
- * it stores the current argument, the monty file being processed and the
- * current line being read from the monty file.
- */
-
-typedef struct MontyContext
-{
-	char *argument;/*arg associated with opcode*/
-	FILE *file;/*pointer monty file*/
-	char *line; /*current line being read from the monty file*/
-} MontyContext;
-extern MontyContext montycontext;
 
 /*Prototypes*/
 Stack *create_stack(void);

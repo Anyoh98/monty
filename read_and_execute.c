@@ -14,7 +14,8 @@ void read_line(stack_t **stack)
 	char *opcode = NULL;
 	char *delim = " \n\r\t\a";
 
-	while ((chars_read = getline(&montycontext.line, &n, montycontext.file)) != -1)
+	while ((chars_read = getline(&montycontext.line,
+					&n, montycontext.file)) != -1)
 	{
 		count++;
 		opcode = strtok(montycontext.line, delim);

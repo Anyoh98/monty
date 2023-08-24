@@ -63,14 +63,18 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*Prototypes*/
+/*OTHER FUNCTIONS PROTOTYPES*/
 void free_linked_list(stack_t *head);
 void execute_opcode(char *opcode, stack_t **stack, unsigned int count);
 void read_line(stack_t **stack);
 stack_t *add_newnode(stack_t **stack, const int n);
-void push_op(stack_t **head, unsigned int line_number);
 bool isNumber(char *str);
 void handle_error(stack_t **stack, char *message);
+
+/*OPCODES PROTOTYPES*/
 void pall_op(stack_t **stack, unsigned int line_number);
+void push_op(stack_t **head, unsigned int line_number);
+void pop_op(stack_t **head, unsigned int line_number);
+void pint_op(stack_t **head, unsigned int line_number);
 
 #endif

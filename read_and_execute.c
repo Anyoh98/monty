@@ -49,6 +49,8 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int count)
 instruction_t instructions[] = {
 		{"push", push_op},
 		{"pall", pall_op},
+		{"pop", pop_op},
+		{"pint", pint_op},
 		{NULL, NULL}
 	};
 	for (i = 0; instructions[i].opcode; i++)

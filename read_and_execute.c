@@ -54,6 +54,10 @@ instruction_t instructions[] = {
 		{"swap", swap_op},
 		{"add", add_op},
 		{"nop", nop_op},
+		{"sub", sub_op},
+		{"div", div_op},
+		{"mul", mul_op},
+		{"mod", mod_op},
 		{NULL, NULL}
 	};
 	for (i = 0; instructions[i].opcode; i++)

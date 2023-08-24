@@ -12,7 +12,7 @@ void read_line(stack_t **stack)
 	int count = 0;
 	ssize_t chars_read;
 	char *opcode = NULL;
-	char *delim = " $\n\r\t\a";
+	char *delim = " \n\r\t\a";
 
 	while ((chars_read = getline(&montycontext.line,
 					&n, montycontext.file)) != -1)

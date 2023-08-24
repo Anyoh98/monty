@@ -50,13 +50,6 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct Stack - stack structure using double linked lists
- * @top: front/head of the stack
- *
- * Description: top is a pinter to teh top o the stack
- */
-
-/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -72,7 +65,7 @@ typedef struct instruction_s
 
 /*Prototypes*/
 void free_linked_list(stack_t *head);
-void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
+void execute_opcode(char *opcode, stack_t **stack, unsigned int count);
 void read_line(stack_t **stack);
 stack_t *add_newnode(stack_t **stack, const int n);
 void push_op(stack_t **head, unsigned int line_number);

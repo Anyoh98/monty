@@ -12,7 +12,7 @@ void read_line(stack_t **stack)
 	int count = 0;
 	ssize_t chars_read;
 	char *opcode = NULL;
-	char *delim = " \n\r\t\a";
+	char *delim = " $\n\r\t\a";
 
 	while ((chars_read = getline(&montycontext.line,
 					&n, montycontext.file)) != -1)
@@ -22,6 +22,14 @@ void read_line(stack_t **stack)
 		montycontext.argument = strtok(NULL, delim);
 		if (opcode == NULL || *opcode == '#')
 			continue;
+		if (strcmp(opcode, "push") == 0 && montycontext.argument == NULL)
+		{
+			fprintf(stderr, "L%d: push requires an argument\n", count);
+			free_linked_list(*stack);
+			fclose(montycontext.file);
+			free(montycontext.line);
+			exit(EXIT_FAILURE);
+		}
 		execute_opcode(opcode, stack, count);
 	}
 }
@@ -30,7 +38,7 @@ void read_line(stack_t **stack)
  * execute_opcode - Function that executes the opcode
  * @opcode: string conataining opcode name e.g push, pop, etc to be executed.
  * @stack: pointer to a pointer to the stack_t structure
- * @line_number: represents current line number of the opcode.
+ * @count: represents current line number of the opcode.
  * Return: void
  */
 
@@ -38,7 +46,7 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int count)
 {
 	int i;
 
-	instruction_t instructions[] = {
+instruction_t instructions[] = {
 		{"push", push_op},
 		{"pall", pall_op},
 		{NULL, NULL}

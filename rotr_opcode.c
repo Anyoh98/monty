@@ -4,12 +4,13 @@
  * @stack: Pointer to the top of the stack
  * @line_number: Line number in the Monty file where the opcode appears
  */
-void rotr_op(stack_t **stack, unsigned int line_number)
+void rotr_op(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *current = *stack;
-	stack_t *last = NULL;
+	stack_t *current;
+	stack_t *last;
 
-	(void)line_number; /*Marking the parameter as unused*/
+	current = *stack;
+	last = NULL;
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return;
